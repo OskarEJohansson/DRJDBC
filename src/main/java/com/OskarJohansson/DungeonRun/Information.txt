@@ -1,0 +1,224 @@
+Spelet är ett turbaserat spel där användaren blir bemött av en meny där de får välja hur
+de skall ta sig vidare inom spelet.
+
+Spelet utgår på att växa sig stark genom att besegra sina motståndare. Men var
+försiktig, det finns en risk att du stöter på något som är bortom säkerhetsområdet, då
+behöver man en annan strategi.. fly eller strida?
+Om du lyckats ta dig oskadd ur denna situation genom att fly, så fortsätter spelaren mot
+nästa motståndare.
+
+Har man däremot lyckats besegra denna fiende, får du erfarenhetspoäng vilket krävs
+för att uppnå nästa nivå, där karaktären blir starkare.
+Kursplan Fokus på: OOP, abstrahering, inkapsling, enhetstester, arv, polymorfism,
+aggregat, felhantering och problemlösning!
+
+Klasser:
+Följande klasser ska finnas med i spelet
+Godkänt:
+• Player
+• Monster
+• ICombat (Interface) (Eller abstrakt klass)
+• Enhetstester
+
+Väl Godkänt:
+• Shop
+• Weapon
+• WriteScoreFile
+• Färger
+• Felhantering
+• Fördjupande Enhetstester
+
+
+Player Variables
+‘Player’ klassen ska ha med följande variabler (Du får själv bestämma också) :
+• strength ( Styrka )
+• intelligence ( Intelligens )
+• agility ( Skicklighet/Snabbhet/Vighet )
+• health ( Hälsa )
+• experience ( Poäng till nästa nivå )
+• level ( Utökar grund attributen: Styrka, intelligens och snabbhet)
+• baseDamage ( Grund skada )
+
+strength
+Beroende på hur mycket styrka spelaren har så ska detta — påverka hur mycket skada
+vi utgör när vi möter en motståndare.
+
+intelligence
+Beroende på hur mycket intelligens spelaren har så ska detta — utöka procentuellt en
+chans att dubbla sin skada.
+Alternativt - mana poäng.
+
+agility
+Beroende på hur mycket rörlighet spelaren har så ska detta — utöka chansen att
+motståndare missar spelaren.
+
+hp / health / hitPoints
+Beroende på hur mycket Hälsa du har, så utökas maximala antalet liv spelaren har.
+Förlora all hälsa == Game Over
+
+experience
+Krävs för att gå upp i ‘level’. Varje 100:e poäng == level + 1
+
+level
+Vartenda level ökar Styrka, Intelligence & Agility med 2.
+
+baseDamage
+Är till för att kalkylera hur mycket skada spelaren tillför vid varje attack.
+
+currency / gold
+Kan användas för att köpa saker i ‘shoppen’. Vg punkt.
+
+‘Player’ Metoder
+Spelaren ska ha tillgång till ett par metoder för att kunna:
+agera, kalkylera och definiera logik som påverkar spelet via interaktivitet.
+Här har vi ett par exempel på metoder som hade kunnat finnas med…
+
+levelUp( )
+För varje X EXP så ökar spelarens ‘Level’ med +1 och skriver ut ett meddelande som feedback
+att spelaren har uppnått ny nivå!
+
+act( )
+Spelaren ska få X valmöjligheter, dessa kommer gå igenom en Switch med Scanner för att kunna
+styra vad spelaren får lov att göra under ‘strids sekvensen’.
+Följande metoder hade kunnat kallas från act():
+
+•flee( )
+Spelaren ska kunna få välja att fly från ett monster under ‘strids sekvensen’.
+Den här metoden kan då kallas från playerCombat( ).
+Kalkyleringen hade kunnat basera sig på en procentuell chans, som tar in ‘Agility’ som
+förslag på om vi lyckats springa iväg!
+
+• attack( )
+Spelaren slåss för att skada monstret.
+Kan kalla på ‘calculateDamage' härifrån.
+
+• getStatus( )
+Spelaren kan välja att hämta ut information om monstret såväl som spelarens nuvarande
+hälsa och styrka!
+calculateDamage( int strength )
+Vi ska kunna kalkylera variabeln: baseDamage + (styrka * 2 / 4 + 1).
+Därefter så returnerar vi värdet.
+
+didDodge( )
+Vi ska kunna kalkylera och returnera en ‘Boolean' om vi lyckats undvika motståndarens slag.
+Här hade vi kunnat ta med ett slumpat tal mellan 1-100.
+
+Exempel: vår ‘Agility’ är 25, då är ribban 25 av 100!
+Slumpa tal — 24 —> return true (Vi har LYCKATS undvika slaget)
+Slumpa tal — 35 —> return false (Vi har INTE lyckats undvika slaget)
+
+Monster Metoder
+Vår motståndare!
+Monstret kommer dock i olika former, storlekar och detta påverkar då såklart styrkan,
+hälsan, skicklighet och såklart belöningarna från monstret!
+
+attack( )
+Monstret skadar spelaren.
+If ( player.playerDIdDodge() ) {
+SOUT( “DODGED” )
+} else {
+calculate Monster Damage
+}
+
+generateMonsterList( )
+Returnerar listan av olika typer av monster, hade kunnat vara en Array!
+Detta är perfekt om vi t.ex vill slumpa monster!
+Om ni har en ‘Game’ klass, så kan denna metod egentligen ligga inom ‘Game’!
+Monster behöver inte ha så många metoder- men här får ni leva ut er kreativitet om ni känner att
+detta hade behövts.
+
+Hur spelet spelas
+När spelet startas, så ska Spelaren få mata in sitt namn.
+Vi bemöts senare av en Meny!
+Här får vi välja:
+Strida mot ett monster,
+Status, generell statistik om spelaren,
+avsluta spelet.
+VG så ska vi också kunna titta på vår ‘shop’ för att handla.
+När vi strider ska vi kunna:
+• attackera,
+•fly,
+• se status,
+• segra eller förlora.
+Om man segrar, så ska vi bli belönade i form av: EXP (även guld om man siktar mot VG)
+Förlorar vi så avslutas spelet.
+När vi segrat hoppar vi tillbaka till menyn och så ‘loopar spelet’, där man frågar spelaren
+igen om att: avsluta spel, strida vidare, kolla status eller ‘shop’.. (VG)
+
+Kravlista
+Godkänt:
+❖ Player
+• Player klass existerar med relevanta metoder och:
+• Relevanta variabler som nämnts på sida 3
+• Funktionalitet för alla variabler (inget oanvänt och är relevant)
+• Spelaren ska kunna förlora inom en fight( )
+• Spelaren ska kunna segra inom en fight( ) därefter belönas: getRewards()
+• Spelaren ska kunna ta skada när vi blir attackerade
+• Spelaren ska kunna skada motståndaren när vi attackerar
+• Spelaren ska ha med Getters & Setters med privata variabler
+
+❖ Monster
+• Monster klass existerar med relevanta metoder och:
+• Relevanta variabler för spelets gång såsom hälsa, styrka och snabbhet
+• Funktionalitet för alla variabler (inget oanvänt och är relevant)
+• Monstret ska komma i olika variationer av styrka / svårighet som är realistisk till
+spelets regler (inget är omöjligt)
+
+❖ ICombat
+• Interface existerar med relevanta metoder för att kunna:
+•fight( )
+• Player inherits interface
+• Monster inherits interface
+
+❖ Enhetstester
+• Klassen existerar
+• Har 3 @Test som kollar:
+• Kolla om spelaren kan gå upp i ‘Level’
+• Kolla om spelaren kan ‘förlora’
+• Kolla om skadan är lika mycket som spelaren KAN skada
+
+❖ Felhantering
+• Appen ska inte krascha under spelets gång
+
+❖ Menu / Game - OPTIONAL
+• Meny klass existerar med relevanta metoder för att kunna:
+• quit()
+• getStatus()
+
+•fight( )
+•fightMenu( ) - Aktiveras när vi strider. Här kan spelaren:
+•flee( ) - Flyr från monstret beroende på chans
+•fight ( ) - Strider och orsakar skada mot monstrets hälsa
+• status ( ) - Få ut text på monstrets hälsa, och spelarens hälsa
+STI Kristoffer Johansson of 8 10
+
+
+Väl Godkänt:
+❖ Shop
+• Shop klass existerar med relevanta metoder och:
+• Kan handla vapen och kräver:
+• Player Currency
+• Spend Currency
+• Items (med någon positiv effekt)
+
+❖ Colors
+• Varje spelarens variabel ska ha en unik färg i terminalen såsom
+• Strength
+• Agility
+• HP
+
+❖ WriteFile
+• WriteScore klass existerar med relevanta metoder såsom:
+• On player death - writeScore()
+• How many enemies have been defeated
+• Player’s level
+• Player’s weapons
+
+❖ Enhetstester - Ökad kvalité på tester för VG
+( Väl utförda tester som kollar relevant data som sedan testas )
+
+❖ Felhantering
+• Appens alla funktionaliteter fungerar på ett logiskt och relevant sätt till förhållande
+hur spelet i grund ska spelas.
+• Kraschar ej
+• Finns inga ‘null’ värden

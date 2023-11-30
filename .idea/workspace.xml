@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6cfcacef-708c-4a26-9b0d-6b924cdbfcfb" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="JUnit3 Test Class" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+        &quot;lastFilter&quot;: {
+        &quot;state&quot;: &quot;OPEN&quot;,
+        &quot;assignee&quot;: &quot;OskarEJohansson&quot;
+        }
+        }</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d2324df1-ac84-4f53-8403-c8d120e5ddd8" />
+        <option name="url" value="https://github.com/OskarEJohansson/DungeonRun.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/PlayerControl.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+        &quot;associatedIndex&quot;: 6
+        }</component>
+  <component name="ProjectId" id="2XA4A8aM0FQ37lbYeaozaEBBjYI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;terminalDisplay&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/oskarjohansson/Downloads/DungeonRun-main/src/main/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b674045c5aa2780b8d68cdc44effa4a8&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.OskarJohansson.DungeonRun.Control" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.OskarJohansson.DungeonRun.Model" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.OskarJohansson.DungeonRun.Control" />
+      <recent name="com.OskarJohansson.DungeonRun.Model.Menu" />
+      <recent name="com.OskarJohansson.DungeonRun.Model" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.OskarJohansson.DungeonRun.Control" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.OskarJohansson.DungeonRun.Main" />
+      <module name="DungeonRun" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.OskarJohansson.DungeonRun.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonsterCombatControlTest.hasPlayerKilledAllTheEnemies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DungeonRun" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.OskarJohansson.DungeonRun.Control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.OskarJohansson.DungeonRun.Control" />
+      <option name="MAIN_CLASS_NAME" value="com.OskarJohansson.DungeonRun.Control.MonsterCombatControlTest" />
+      <option name="METHOD_NAME" value="hasPlayerKilledAllTheEnemies" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonsterCombatControlTest.playerAttackCurrantMonster" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DungeonRun" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.OskarJohansson.DungeonRun.Control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.OskarJohansson.DungeonRun.Control" />
+      <option name="MAIN_CLASS_NAME" value="com.OskarJohansson.DungeonRun.Control.MonsterCombatControlTest" />
+      <option name="METHOD_NAME" value="playerAttackCurrantMonster" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonsterCombatControlTest.resetMonsterAndBossHealthAndTurningPointsWhenPlayerIsKilled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DungeonRun" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.OskarJohansson.DungeonRun.Control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.OskarJohansson.DungeonRun.Control" />
+      <option name="MAIN_CLASS_NAME" value="com.OskarJohansson.DungeonRun.Control.MonsterCombatControlTest" />
+      <option name="METHOD_NAME" value="resetMonsterAndBossHealthAndTurningPointsWhenPlayerIsKilled" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonsterCombatControlTest.testHasPlayerKilledAllTheEnemies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DungeonRun" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.OskarJohansson.DungeonRun.Control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.OskarJohansson.DungeonRun.Control" />
+      <option name="MAIN_CLASS_NAME" value="com.OskarJohansson.DungeonRun.Control.MonsterCombatControlTest" />
+      <option name="METHOD_NAME" value="testHasPlayerKilledAllTheEnemies" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MonsterCombatControlTest.resetMonsterAndBossHealthAndTurningPointsWhenPlayerIsKilled" />
+        <item itemvalue="JUnit.MonsterCombatControlTest.testHasPlayerKilledAllTheEnemies" />
+        <item itemvalue="JUnit.MonsterCombatControlTest.playerAttackCurrantMonster" />
+        <item itemvalue="JUnit.MonsterCombatControlTest.hasPlayerKilledAllTheEnemies" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6cfcacef-708c-4a26-9b0d-6b924cdbfcfb" name="Changes" comment="" />
+      <created>1698058406600</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698058406600</updated>
+      <workItem from="1698058407756" duration="33112000" />
+      <workItem from="1698311575040" duration="6249000" />
+      <workItem from="1699605504132" duration="3273000" />
+      <workItem from="1699631390969" duration="13408000" />
+      <workItem from="1700730715293" duration="16316000" />
+      <workItem from="1701095614821" duration="647000" />
+      <workItem from="1701165700782" duration="1332000" />
+      <workItem from="1701167229642" duration="9864000" />
+      <workItem from="1701328478284" duration="5032000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/MenuControl.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
