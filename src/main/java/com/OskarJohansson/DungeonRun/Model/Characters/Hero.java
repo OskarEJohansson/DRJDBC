@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hero implements Serializable {
+public class Hero{
 
     private Long id;
     private String name;
@@ -26,7 +26,7 @@ public class Hero implements Serializable {
     private int level;
     private int killList;
     private int deathCount;
-    private boolean codeBreaker;
+    private int codeBreaker;
     private List<HealthPotion> potionStash;
 
     public Hero() {
@@ -40,7 +40,7 @@ public class Hero implements Serializable {
         this.level = 1;
         this.killList = 0;
         this.deathCount = 0;
-        this.codeBreaker = false;
+        this.codeBreaker = 0;
         this.potionStash = new ArrayList<>();
 
     }
@@ -233,11 +233,11 @@ public class Hero implements Serializable {
         this.deathCount += deathCount;
     }
 
-    public boolean isCodeBreaker() {
+    public int getCodeBreaker() {
         return codeBreaker;
     }
 
-    public void setCodeBreaker(boolean codeBreaker) {
+    public void setCodeBreaker(int codeBreaker) {
         this.codeBreaker = codeBreaker;
     }
 

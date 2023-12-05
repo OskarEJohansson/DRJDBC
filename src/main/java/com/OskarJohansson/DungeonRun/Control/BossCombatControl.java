@@ -94,7 +94,7 @@ public class BossCombatControl {
 
     public boolean isBossNerdWizard(MapControl mapControl, PlayerControl player) {
         if (Objects.equals(mapControl.currentLevel.getFinalBoss().getName(), "Nerd Wizard")) {
-            player.getHero().setCodeBreaker(true);
+            player.getHero().setCodeBreaker((byte) 1);
             return true;
         }
         return false;

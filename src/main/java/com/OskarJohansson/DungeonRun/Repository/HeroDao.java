@@ -32,7 +32,7 @@ public class HeroDao {
                 statement.setInt(12, hero.getLevel());
                 statement.setInt(13, hero.getKillList());
                 statement.setInt(14, hero.getDeathCount());
-                statement.setBoolean(15, hero.isCodeBreaker());
+                statement.setInt(15, hero.getCodeBreaker());
                 statement.setString(16, hero.getWeapon().getName());
                 statement.setString(17, hero.getWeapon().getWeaponClass());
                 statement.setInt(18, hero.getWeapon().getDamageMin());
@@ -62,7 +62,7 @@ public class HeroDao {
                 statement.setInt(12, hero.getLevel());
                 statement.setInt(13, hero.getKillList());
                 statement.setInt(14, hero.getDeathCount());
-                statement.setBoolean(15, hero.isCodeBreaker());
+                statement.setInt(15, hero.getCodeBreaker());
                 statement.setString(16, hero.getWeapon().getName());
                 statement.setString(17, hero.getWeapon().getWeaponClass());
                 statement.setInt(18, hero.getWeapon().getDamageMin());
@@ -106,7 +106,7 @@ public class HeroDao {
                     hero.setLevel(resultSet.getInt("level"));
                     hero.setKillList(resultSet.getInt("killList"));
                     hero.setDeathCount(resultSet.getInt("deathCount"));
-                    hero.setCodeBreaker(resultSet.getBoolean("codeBreaker"));
+                    hero.setCodeBreaker(resultSet.getInt("codeBreaker"));
 
                     WeaponParentModel weapon = new WeaponParentModel();
                     weapon.setName(resultSet.getString("weaponName"));
@@ -153,7 +153,7 @@ public class HeroDao {
                 hero.setLevel(resultSet.getInt("level"));
                 hero.setKillList(resultSet.getInt("killList"));
                 hero.setDeathCount(resultSet.getInt("deathCount"));
-                hero.setCodeBreaker(resultSet.getBoolean("codeBreaker"));
+                hero.setCodeBreaker(resultSet.getInt("codeBreaker"));
 
                 WeaponParentModel weapon = new WeaponParentModel();
                 weapon.setName(resultSet.getString("weaponName"));

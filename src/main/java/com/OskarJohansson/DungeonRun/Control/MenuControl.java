@@ -159,7 +159,7 @@ public class MenuControl {
                     if (player.getHero().getLevel() < 7) {
                         System.out.println("You must be level 7 to enter Teacher Lounge!");
                     }
-                    if (!player.getHero().isCodeBreaker()) {
+                    if (player.getHero().getCodeBreaker() == 0) {
                         System.out.println("You can't crack the security code to break in to the Tower! Defeat the Nerd Wizard of Kjell & Co to attain the Code Breaker!");
                         return;
                     }
