@@ -1,26 +1,16 @@
 package com.OskarJohansson.DungeonRun.Model.Items.Potions;
 
-import java.io.Serializable;
 
-public class HealthPotion{
+public class HealthPotion extends PotionParentModel{
 
-    private int hP = 10;
-    private boolean isUsed = false;
+    private String potionName ="Health Potion";
+    private int potionID = 11;
+    private int potionValue = 10;
 
-    public int gethP() {
-        return hP;
+    public HealthPotion() {
+        this.setPotionID(this.potionID);
+        this.setPotionName(this.potionName);
+        this.setPotionValue(this.potionValue);
     }
 
-    public boolean isUsed() {
-        return isUsed;
-    }
-
-    public void setUsed(boolean used) {
-        isUsed = used;
-    }
-
-    public int useHealthPotion() {
-        this.isUsed = true;
-        return this.hP;
-    }
 }

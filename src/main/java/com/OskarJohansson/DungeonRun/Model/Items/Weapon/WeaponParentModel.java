@@ -1,17 +1,25 @@
 package com.OskarJohansson.DungeonRun.Model.Items.Weapon;
 
-import java.io.Serializable;
+public class WeaponParentModel  {
 
-public class WeaponParentModel implements Serializable  {
-
+    private int weaponID;
     private String name;
     private String weaponClass;
     private int damageMin;
     private int damageMax;
-    private int turnPoints;
+    private int turningPoints;
     private int minimumLevel;
-    private int cost;
+    private int cost; // SHOULD THIS VARIABLE BE HOLD BY THE STORE CLASS?
     private String soundOfAttack;
+
+
+    public int getWeaponID() {
+        return weaponID;
+    }
+
+    public void setWeaponID(int weaponID) {
+        this.weaponID = weaponID;
+    }
 
     public String getName() {return name;}
 
@@ -28,11 +36,6 @@ public class WeaponParentModel implements Serializable  {
         return damageMin;
     }
 
-    public void setDamage(int damage) {
-        this.damageMin = damage;
-    }
-
-
     public void setDamageMin(int damageMin) {
         this.damageMin = damageMin;
     }
@@ -45,12 +48,12 @@ public class WeaponParentModel implements Serializable  {
         this.damageMax = damageMax;
     }
 
-    public int getTurnPoints() {
-        return turnPoints;
+    public int getTurningPoints() {
+        return turningPoints;
     }
 
-    public void setTurnPoints(int turnPoints) {
-        this.turnPoints = turnPoints;
+    public void setTurningPoints(int turningPoints) {
+        this.turningPoints = turningPoints;
     }
 
     public int getMinimumLevel() {return minimumLevel;}

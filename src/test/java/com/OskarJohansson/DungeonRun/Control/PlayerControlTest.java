@@ -3,6 +3,7 @@ package com.OskarJohansson.DungeonRun.Control;
 import com.OskarJohansson.DungeonRun.Model.Characters.Barbarian;
 import com.OskarJohansson.DungeonRun.Model.Characters.CodeMonkey;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
+import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponClassTwo.Spot;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponClassTwo.TwoHandSword;
 import org.junit.Assert;
@@ -106,7 +107,7 @@ class PlayerControlTest {
         player.getHero().addPotionStash(new HealthPotion());
         Assert.assertEquals(player.getHero().getPotionStash().size(), 1);
 
-        for (HealthPotion potion : player.getHero().getPotionStash()) {
+        for (PotionParentModel potion : player.getHero().getPotionStash()) {
             Assert.assertTrue(player.playerHasMaxHealthPoints(player));
             player.getHero().setHealthPoints(-1);
             Assert.assertTrue(player.drinkHealtPotion(player, potion));

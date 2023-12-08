@@ -2,6 +2,7 @@ package com.OskarJohansson.DungeonRun.Control;
 
 import com.OskarJohansson.DungeonRun.Model.Characters.Hero;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
+import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 
 import java.util.*;
 
@@ -21,7 +22,7 @@ public class PlayerControl {
     }
 
     public int attack(PlayerControl player) {
-        player.getHero().setTurningPoints(-player.getHero().getWeapon().getTurnPoints());
+        player.getHero().addTurningPoints(-player.getHero().getWeapon().getTurningPoints());
         return new Random().nextInt(getHero().getWeapon().getDamageMin(), getHero().getWeapon().getDamageMax() + 1);
     }
 
@@ -36,7 +37,7 @@ public class PlayerControl {
 
     public boolean takeDamage(PlayerControl player, Boolean block, int damage) {
         if (!block) {
-            player.getHero().setHealthPoints(-damage);
+            player.getHero().addHealthPoints(-damage);
             System.out.printf(">>>>     %s takes \033[0;31m%d\033[0m damage    <<<<!\n", player.getHero().getName(), damage);
             return false;
         }
@@ -68,7 +69,7 @@ public class PlayerControl {
     }
 
     public boolean iterateThroughHealthPotionStash(PlayerControl player) {
-        for (HealthPotion potion : player.getHero().getPotionStash()) {
+        for (PotionParentModel potion : player.getHero().getPotionStash()) {
             if (!potion.isUsed()) {
                 drinkHealtPotion(player, potion);
                 return true;
@@ -93,11 +94,11 @@ public class PlayerControl {
         return false;
     }
 
-    public boolean drinkHealtPotion(PlayerControl player, HealthPotion potion) {
+    public boolean drinkHealtPotion(PlayerControl player, PotionParentModel potion) {
         player.getHero().addHealthPoints(potion.useHealthPotion());
         potion.setUsed(true);
         isMaxHealthPointsExceeded(player);
-        System.out.printf(">>>>     You added \033[0;34m%d\033[0m Health points. You now have \033[0;34m%d/%d\033[0m health points!     <<<<", potion.gethP(), player.getHero().getHealthPoints(), player.getHero().getHealthPointsBase());
+        System.out.printf(">>>>     You added \033[0;34m%d\033[0m Health points. You now have \033[0;34m%d/%d\033[0m health points!     <<<<", potion.getPotionValue(), player.getHero().getHealthPoints(), player.getHero().getHealthPointsBase());
         getHero().setTurningPoints(-1);
         return true;
     }
@@ -122,7 +123,7 @@ public class PlayerControl {
             player.getHero().resetGold();
             player.getHero().resetHealthPoints();
             player.getHero().resetTurningPoints();
-            player.getHero().setDeathCount(1);
+            player.getHero().addDeathCount(1);
             return true;
         }
 
@@ -145,13 +146,13 @@ public class PlayerControl {
                 >>>>    %sLevel Up!|%s    <<<<
                 """,BLUE_UNDERLINED, RESET);
 
-        player.getHero().setLevel(1);
-        player.getHero().setStrength(1);
-        player.getHero().setIntelligence(1);
-        player.getHero().setAgility(1);
-        player.getHero().setHealthPointsBase(3);
-        player.getHero().setTurningPoints(1);
-        player.getHero().setTurningPointsBase(1);
+        player.getHero().addLevel(1);
+        player.getHero().addStrength(1);
+        player.getHero().addIntelligence(1);
+        player.getHero().addAgility(1);
+        player.getHero().addHealthPointsBase(3);
+        player.getHero().addTurningPoints(1);
+        player.getHero().addTurningPointsBase(1);
 
         player.getHero().resetHealthPoints();
 

@@ -56,7 +56,7 @@ public class BossCombatControl {
     public void playerAttackBoss(PlayerControl player, MapControl mapControl) {
 
         while (player.getHero().getTurningPoints() > 0) {
-            System.out.printf("\033[4;32m%s attacks for %d turningpoints and with %d maximum damage points\033[0m\n", player.getHero().getName(), player.getHero().getWeapon().getTurnPoints(), player.getHero().getWeapon().getDamageMax());
+            System.out.printf("\033[4;32m%s attacks for %d turningpoints and with %d maximum damage points\033[0m\n", player.getHero().getName(), player.getHero().getWeapon().getTurningPoints(), player.getHero().getWeapon().getDamageMax());
             System.out.println(player.getHero().getWeapon().getSoundOfAttack());
             if (mapControl.currentLevel.getFinalBoss().getHealthPoints() > 0 && !mapControl.currentLevel.getFinalBoss().isKilled()) {
                 mapControl.currentLevel.getFinalBoss().takeDamage(mapControl.currentLevel.getFinalBoss().block(), player.attack(player));

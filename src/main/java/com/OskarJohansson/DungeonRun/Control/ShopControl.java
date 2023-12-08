@@ -1,6 +1,7 @@
 package com.OskarJohansson.DungeonRun.Control;
 
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
+import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponClassThree.AtlanteanSword;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponClassThree.PredatorDrone;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponClassTwo.Spot;
@@ -44,7 +45,7 @@ public class ShopControl {
             System.out.println("You can't afford the potion. Kill more minions and collect more gold!");
         } else {
             System.out.println("You purchased a 10 hp Potion for 5 gold.");
-            player.getHero().setGold(-5);
+            player.getHero().addGold(-5);
             player.addHealthPotionToStash(player, new HealthPotion());
         }
     }
@@ -67,7 +68,7 @@ public class ShopControl {
         }
         System.out.printf("You bought %s for %d", weapon.getName(), weapon.getCost());
         player.getHero().setWeapon(weapon);
-        player.getHero().setGold(-weapon.getCost());
+        player.getHero().addGold(-weapon.getCost());
     }
 
     public void buyDrone(PlayerControl player){
@@ -129,8 +130,6 @@ public class ShopControl {
             }
         }while (on);
     }
-
-
 }
 
 

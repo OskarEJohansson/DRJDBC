@@ -1,6 +1,7 @@
 package com.OskarJohansson.DungeonRun.Model.Characters;
 
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
+import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponParentModel;
 
 import java.io.Serializable;
@@ -27,7 +28,8 @@ public class Hero{
     private int killList;
     private int deathCount;
     private int codeBreaker;
-    private List<HealthPotion> potionStash;
+    private List<PotionParentModel> potionStash;
+    private Long stashID;
 
     public Hero() {
         this.healthPoints = 5;
@@ -35,14 +37,22 @@ public class Hero{
         this.turningPoints = 1;
         this.turningPointsBase = 1;
         this.experiencePoints = 0;
-        this.gold = 0;
+        this.gold = 100;
         this.goldBase = 0;
-        this.level = 1;
+        this.level = 3;
         this.killList = 0;
         this.deathCount = 0;
         this.codeBreaker = 0;
         this.potionStash = new ArrayList<>();
 
+    }
+
+    public Long getStashID() {
+        return this.stashID ;
+    }
+
+    public void setStashID(Long stashID) {
+        this.stashID = stashID;
     }
 
     public Long getId() {
@@ -186,7 +196,7 @@ public class Hero{
     }
 
     public void setGold(int gold) {
-        this.gold += gold;
+        this.gold = gold;
     }
 
     public void addGold(int gold) {
@@ -241,7 +251,7 @@ public class Hero{
         this.codeBreaker = codeBreaker;
     }
 
-    public List<HealthPotion> getPotionStash() {
+    public List<PotionParentModel> getPotionStash() {
         return potionStash;
     }
 

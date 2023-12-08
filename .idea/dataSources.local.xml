@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-232.9559.62">
-    <data-source name="dungeonrun@localhost" uuid="01bab032-dc77-4ebe-9667-d71437ca362d">
+    <data-source name="DRJDBC@localhost" uuid="b995a9f3-3aea-42ed-820e-63fe5be084d9">
       <database-info product="MySQL" version="8.1.0" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.7.3" dbms="MYSQL" exact-version="8.1.0" exact-driver-version="2.7">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -11,10 +11,7 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="DungeonRun" />
-          </node>
+          <node kind="schema" qname="DRJDBC" />
         </introspection-scope>
       </schema-mapping>
     </data-source>
