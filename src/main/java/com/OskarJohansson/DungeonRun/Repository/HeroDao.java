@@ -89,7 +89,6 @@ public class HeroDao {
                 int rowsInserted = statement.executeUpdate();
 
                 ResultSet generatedKeys = statement.getGeneratedKeys();
-                long generatedID = -1;
                 if (generatedKeys.next()) {
                     hero.setId(generatedKeys.getLong(1));
                 }
@@ -100,17 +99,31 @@ public class HeroDao {
 
                 rowsInserted += saveHeroStmt.executeUpdate();
 
-                if(hero.getStashID() == null){
+                PreparedStatement saveStashStatement = conn.prepareStatement("INSERT INTO Stash (heroID) Values(?)", Statement.RETURN_GENERATED_KEYS);
+                saveStashStatement.setLong(1, hero.getId());
+                rowsInserted += saveStashStatement.executeUpdate();
 
-                    PreparedStatement saveStashStatement = conn.prepareStatement("INSERT INTO Stash (heroID, potionID) Values(?,?)");
+                ResultSet generatedStashID = saveStashStatement.getGeneratedKeys();
 
-                    for (PotionParentModel potion : hero.getPotionStash()) {
-                        saveStashStatement.setLong(1, hero.getId());
-                        saveStashStatement.setLong(2, potion.getPotionID());
-                        saveStashStatement.executeUpdate();
-                    }
+                rowsInserted += saveStashStatement.executeUpdate();
 
-                    rowsInserted += saveStashStatement.executeUpdate();
+                if (generatedStashID.next()) {
+                    System.out.println(generatedKeys.getLong(1));
+                    hero.setStashID(generatedKeys.getLong(1));
+                }
+                PreparedStatement saveStashIDInHero = conn.prepareStatement("UPDATE Hero SET stashID = ? WHERE (heroID) = ? ");
+                saveStashIDInHero.setLong(1,hero.getStashID());
+                saveStashIDInHero.setLong(2,hero.getStashID());
+
+                rowsInserted += saveStashIDInHero.executeUpdate();
+
+                PreparedStatement saveItemInStash = conn.prepareStatement("INSERT INTO uniqueStash(stashID, itemID) VALUES (?, ?)");
+
+                for (PotionParentModel potion : hero.getPotionStash()) {
+                    saveItemInStash.setLong(1, hero.getStashID());
+                    saveItemInStash.setLong(2, potion.getPotionID());
+
+                    rowsInserted += saveItemInStash.executeUpdate();
                 }
 
                 return rowsInserted > 0;
@@ -132,19 +145,18 @@ public class HeroDao {
                 statement.setInt(12, hero.getDeathCount());
                 statement.setInt(13, hero.getCodeBreaker());
                 statement.setInt(14, hero.getWeapon().getWeaponID());
-                statement.setLong(15,hero.getId());
-
-
-
-                PreparedStatement saveStashStatement = conn.prepareStatement("INSERT INTO Stash (heroID, potionID) Values(?,?)");
-
-                for (PotionParentModel potion : hero.getPotionStash()) {
-                    saveStashStatement.setLong(1, hero.getId());
-                    saveStashStatement.setLong(2, potion.getPotionID());
-                    saveStashStatement.executeUpdate();
-                }
+                statement.setLong(15, hero.getId());
 
                 int rowsInserted = statement.executeUpdate();
+
+                PreparedStatement saveItemInStash = conn.prepareStatement("INSERT INTO Item(stashID, itemID) VALUES (?, ?)");
+
+                for (PotionParentModel potion : hero.getPotionStash()) {
+                    saveItemInStash.setLong(1, hero.getStashID());
+                    saveItemInStash.setLong(2, potion.getPotionID());
+
+                    rowsInserted += saveItemInStash.executeUpdate();
+                }
 
                 return rowsInserted > 0;
             }
