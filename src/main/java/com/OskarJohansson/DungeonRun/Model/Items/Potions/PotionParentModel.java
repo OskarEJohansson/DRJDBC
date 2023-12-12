@@ -7,6 +7,15 @@ public class PotionParentModel {
     private int potionID = 11;
     private int potionValue = 10;
     private boolean isUsed = false;
+    private Long uniqueItemID;
+
+    public Long getUniqueItemID() {
+        return uniqueItemID;
+    }
+
+    public void setUniqueItemID(Long uniqueItemID) {
+        this.uniqueItemID = uniqueItemID;
+    }
 
     public String getPotionName() {
         return potionName;

@@ -6,13 +6,13 @@ public class Barbarian extends Hero {
 
     public Barbarian() {
         this.setHeroClass("Barbarian");
-        this.setStrength(5);
+        this.setStrength(10);
         this.setIntelligence(5);
         this.setAgility(5);
-        this.setHealthPoints(5);
+        this.setHealthPoints(100);
         this.setHealthPointsBase(5);
-        this.setTurningPoints(3);
-        this.setTurningPointsBase(3);
+        this.setTurningPoints(100);
+        this.setTurningPointsBase(100);
         this.setWeapon(new Sword());
     }
 }

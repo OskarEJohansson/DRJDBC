@@ -39,7 +39,7 @@ public class Hero{
         this.experiencePoints = 0;
         this.gold = 100;
         this.goldBase = 0;
-        this.level = 3;
+        this.level = 10;
         this.killList = 0;
         this.deathCount = 0;
         this.codeBreaker = 0;

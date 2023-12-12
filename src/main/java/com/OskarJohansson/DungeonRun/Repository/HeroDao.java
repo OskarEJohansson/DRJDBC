@@ -1,6 +1,7 @@
 package com.OskarJohansson.DungeonRun.Repository;
 
 import com.OskarJohansson.DungeonRun.Model.Characters.Hero;
+import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponParentModel;
 
@@ -61,7 +62,7 @@ public class HeroDao {
                                                   "deathCount = ?, " +
                                                   "codeBreaker = ?, " +
                                                   "weaponID = ? " +
-                                                  "WHERE heroID = ?";
+                                                  "WHERE heroID = ? ";
 
 
     public boolean saveHero(Hero hero) {
@@ -108,7 +109,6 @@ public class HeroDao {
                 rowsInserted += saveStashStatement.executeUpdate();
 
                 if (generatedStashID.next()) {
-                    System.out.println(generatedKeys.getLong(1));
                     hero.setStashID(generatedKeys.getLong(1));
                 }
                 PreparedStatement saveStashIDInHero = conn.prepareStatement("UPDATE Hero SET stashID = ? WHERE (heroID) = ? ");
@@ -149,11 +149,14 @@ public class HeroDao {
 
                 int rowsInserted = statement.executeUpdate();
 
-                PreparedStatement saveItemInStash = conn.prepareStatement("INSERT INTO Item(stashID, itemID) VALUES (?, ?)");
+                PreparedStatement saveItemInStash = conn.prepareStatement("UPDATE uniqueStash SET stashID = ?, itemID = ? WHERE stashID = ? ");
+                saveItemInStash.setLong(3, hero.getStashID());
+
 
                 for (PotionParentModel potion : hero.getPotionStash()) {
                     saveItemInStash.setLong(1, hero.getStashID());
                     saveItemInStash.setLong(2, potion.getPotionID());
+
 
                     rowsInserted += saveItemInStash.executeUpdate();
                 }
@@ -218,7 +221,10 @@ public class HeroDao {
         Hero hero = null;
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            PreparedStatement statement = conn.prepareStatement("SELECT h.*, w.name, w.weaponClass, w.DamageMin, w.DamageMax, w.turningPoints, w.MinimumLevel, w.Cost, w.SoundOfAttack FROM hero h INNER JOIN weapon w ON h.weaponID = w.weaponID WHERE heroID = ?");
+            PreparedStatement statement = conn.prepareStatement("SELECT h.*, w.name, w.weaponClass, w.DamageMin, w.DamageMax, w.turningPoints, w.MinimumLevel, w.Cost, w.SoundOfAttack " +
+                                                                "FROM hero h " +
+                                                                "INNER JOIN weapon w ON h.weaponID = w.weaponID " +
+                                                                "WHERE heroID = ?");
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
@@ -240,9 +246,11 @@ public class HeroDao {
                 hero.setKillList(resultSet.getInt("killList"));
                 hero.setDeathCount(resultSet.getInt("deathCount"));
                 hero.setCodeBreaker(resultSet.getInt("codeBreaker"));
+                hero.setStashID(resultSet.getLong("stashID"));
+                hero.setId(resultSet.getLong("heroID"));
 
                 WeaponParentModel weapon = new WeaponParentModel();
-                weapon.setName(resultSet.getString("name"));
+                weapon.setName(resultSet.getString("w.name"));
                 weapon.setWeaponID(resultSet.getInt("weaponID"));
                 weapon.setWeaponClass(resultSet.getString("weaponClass"));
                 weapon.setDamageMin(resultSet.getInt("DamageMin"));
@@ -253,6 +261,26 @@ public class HeroDao {
                 weapon.setSoundOfAttack(resultSet.getString("SoundOfAttack"));
 
                 hero.setWeapon(weapon);
+
+                PreparedStatement loadItems = conn.prepareStatement(
+                        "SELECT u.*, i.itemID, i.itemName, i.itemValue " +
+                        "FROM uniqueStash u " +
+                        "INNER JOIN Item i ON i.itemID = u.itemID " +
+                        "WHERE stashID = ?"
+                );
+
+                loadItems.setLong(1, hero.getStashID());
+                ResultSet loadedItems = loadItems.executeQuery();
+
+                while (loadedItems.next()) {
+                    HealthPotion item = new HealthPotion();
+                    item.setPotionID(loadedItems.getInt("itemID"));
+                    item.setPotionName(loadedItems.getString("itemName"));
+                    item.setPotionValue(loadedItems.getInt("itemValue"));
+                    hero.addPotionStash(item);
+                }
+
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
