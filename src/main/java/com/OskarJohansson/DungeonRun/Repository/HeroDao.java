@@ -149,7 +149,11 @@ public class HeroDao {
 
                 int rowsInserted = statement.executeUpdate();
 
-                PreparedStatement saveItemInStash = conn.prepareStatement("UPDATE uniqueStash SET stashID = ?, itemID = ? WHERE stashID = ? ");
+                PreparedStatement deleteStash = conn.prepareStatement("DELETE FROM uniqueStash  WHERE stashID = ? ");
+                deleteStash.setLong(1,hero.getStashID());
+                deleteStash.executeQuery();
+
+                PreparedStatement saveItemInStash = conn.prepareStatement("INSERT INTO uniqueStash(stashID, itemID) VALUES (?, ?)");
                 saveItemInStash.setLong(3, hero.getStashID());
 
 
@@ -279,8 +283,6 @@ public class HeroDao {
                     item.setPotionValue(loadedItems.getInt("itemValue"));
                     hero.addPotionStash(item);
                 }
-
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
