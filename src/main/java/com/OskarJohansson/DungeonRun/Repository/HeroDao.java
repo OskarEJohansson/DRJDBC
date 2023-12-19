@@ -69,6 +69,7 @@ public class HeroDao {
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (hero.getId() == null) {
                 PreparedStatement statement = conn.prepareStatement(INSERT_HERO_SQL, Statement.RETURN_GENERATED_KEYS);
+
                 statement.setString(1, hero.getName());
                 statement.setString(2, hero.getHeroClass());
                 statement.setInt(3, hero.getStrength());
@@ -149,7 +150,7 @@ public class HeroDao {
 
                 int rowsInserted = statement.executeUpdate();
 
-                PreparedStatement deleteStash = conn.prepareStatement("DELETE FROM uniqueStash  WHERE stashID = ? ");
+                PreparedStatement deleteStash = conn.prepareStatement("TRUNCATE TABLE  uniqueStash  WHERE stashID = ? ");
                 deleteStash.setLong(1,hero.getStashID());
                 deleteStash.executeQuery();
 

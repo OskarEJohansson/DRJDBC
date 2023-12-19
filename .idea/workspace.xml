@@ -5,14 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cfcacef-708c-4a26-9b0d-6b924cdbfcfb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d/storage_v2/_src_/schema/CrudApi.3C1poQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d/storage_v2/_src_/schema/DungeonRun.kdHURA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01bab032-dc77-4ebe-9667-d71437ca362d/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b995a9f3-3aea-42ed-820e-63fe5be084d9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b995a9f3-3aea-42ed-820e-63fe5be084d9.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Repository/HeroDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Repository/HeroDao.java" afterDir="false" />
     </list>
@@ -61,27 +53,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;newTables&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/oskarjohansson/Downloads/DungeonRun-main/src/main/java&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b674045c5aa2780b8d68cdc44effa4a8&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "newTables",
+    "last_opened_file_path": "/Users/oskarjohansson/Downloads/DungeonRun-main/src/main/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "b674045c5aa2780b8d68cdc44effa4a8",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.OskarJohansson.DungeonRun.Control" />
@@ -223,7 +218,7 @@
       <workItem from="1701167229642" duration="9864000" />
       <workItem from="1701328478284" duration="5149000" />
       <workItem from="1701781854281" duration="1922000" />
-      <workItem from="1702375467970" duration="8029000" />
+      <workItem from="1702375467970" duration="14854000" />
     </task>
     <servers />
   </component>
