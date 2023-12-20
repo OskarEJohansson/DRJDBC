@@ -2,6 +2,11 @@ package com.OskarJohansson.DungeonRun.Control;
 
 import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import static com.OskarJohansson.DungeonRun.Control.UserInputControl.PRESS_ENTER_TO_CONTINUE;
 
 public class MonsterCombatControl {
@@ -131,6 +136,8 @@ public class MonsterCombatControl {
     public boolean ifPlayerHasKilledTheCurrantEnemy(PlayerControl player, EnemyParentModel monster) {
         System.out.printf("////     You killed the monster and gained %d experience points!    //// \n", monster.getExperiencePoints());
         player.getHero().addKillList(1);
+        monster.setTimeOfDeath(Timestamp.valueOf(LocalDateTime.now()));
+        player.getHero().addToKillStats(monster);
         player.getHero().addExperiencePoints(monster.getExperiencePoints());
         player.getHero().addGold(monster.getGold());
         monster.setKilled(true);

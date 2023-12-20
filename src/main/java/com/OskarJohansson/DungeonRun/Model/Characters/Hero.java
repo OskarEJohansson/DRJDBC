@@ -3,8 +3,8 @@ package com.OskarJohansson.DungeonRun.Model.Characters;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponParentModel;
+import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +29,7 @@ public class Hero{
     private int deathCount;
     private int codeBreaker;
     private List<PotionParentModel> potionStash;
+    private List<EnemyParentModel> killStats;
     private Long stashID;
 
     public Hero() {
@@ -44,6 +45,7 @@ public class Hero{
         this.deathCount = 0;
         this.codeBreaker = 0;
         this.potionStash = new ArrayList<>();
+        this.killStats = new ArrayList<>();
 
     }
 
@@ -259,4 +261,15 @@ public class Hero{
         this.potionStash.add(potion);
     }
 
+    public List<EnemyParentModel> getKillStats() {
+        return killStats;
+    }
+
+    public void setKillStats(List<EnemyParentModel> killStats) {
+        this.killStats = killStats;
+    }
+
+    public void addToKillStats(EnemyParentModel killstats){
+        this.killStats.add(killstats);
+    }
 }

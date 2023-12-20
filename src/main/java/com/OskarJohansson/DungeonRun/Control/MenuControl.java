@@ -3,8 +3,15 @@ package com.OskarJohansson.DungeonRun.Control;
 import com.OskarJohansson.DungeonRun.Model.Characters.Barbarian;
 import com.OskarJohansson.DungeonRun.Model.Characters.CodeMonkey;
 import com.OskarJohansson.DungeonRun.Model.Characters.Hero;
+import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
 import com.OskarJohansson.DungeonRun.Repository.HeroDao;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +37,7 @@ public class MenuControl {
         this.heroDao = new HeroDao();
     }
 
-    public void showStartGameTerminalDisplay(){
+    public void showStartGameTerminalDisplay() {
         System.out.printf("""
                                
                 ++++|      \033[42mWelcome to STI Dungeon Run!\033[0m      |++++
@@ -102,18 +109,19 @@ public class MenuControl {
             System.out.printf("""
                                          
                     +++++|                                          \033[42m   Main Menu   \033[0m                                                       |+++++
-                    ____________________________________________________________________________________________________________________________                         
-                    #1 - Show %s the %s's Level  |   #2 - Show Stats  |   #3 - Show MAP   |   #4 - Enter SHOP   |   #5 - Save Game   |
+                    ___________________________________________________________________________________________________________________________________________                         
+                    #1 - Show %s the %s's Level  |   #2 - Show Stats  |   #3 - Show Kill List  |   #4 - Show MAP   |   #5 - Enter SHOP   |   #6 - Save Game   |
                                          
                      """, player.getHero().getName(), player.getHero().getHeroClass());
 
             switch (UserInputControl.inputInt()) {
                 case 1 -> getPlayerStats(player);
                 case 2 -> getStatus(player);
-                case 3 -> mapMenu(mapControl, player, bossCombatControl, menuControl, monsterCombatControl);
-                case 4 -> shopControl.shop(player);
-                case 5 -> savePlayer(player);
-                default -> System.out.println("Input must be 1 - 5!");
+                case 3 -> getKillList(player);
+                case 4 -> mapMenu(mapControl, player, bossCombatControl, menuControl, monsterCombatControl);
+                case 5 -> shopControl.shop(player);
+                case 6 -> savePlayer(player);
+                default -> System.out.println("Input must be 1 - 6!");
             }
         } while (on);
     }
@@ -288,6 +296,24 @@ public class MenuControl {
                                 
                 """, player.getHero().getName(), player.getHero().getHeroClass(), player.getHero().getDeathCount(), player.getHero().getKillList(), player.getHero().getHealthPoints(), player.getHero().getHealthPointsBase(), player.getHero().getTurningPoints(), player.getHero().getTurningPointsBase(), player.getHero().getGold());
     }
+
+    public void getKillList(PlayerControl player) {
+
+        for (EnemyParentModel monster : player.getHero().getKillStats()) {
+
+            Timestamp time = monster.getTimeOfDeath();
+            LocalDateTime localDateTime = time.toLocalDateTime();
+            String formattedDateTime = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
+            System.out.printf("""
+                    ++++|       \033[0;35m  Monster Kill List  \033[0m        |++++
+                    _______________________________________________________________
+                    Monster: %s     |    Time of Death:    \033[0;31m%s\033[0m   |
+
+                    """, monster.getName(), formattedDateTime);
+        }
+    }
+
 
     public void displayPlayerOptionsInBattleOptions(PlayerControl player) {
         System.out.printf("""

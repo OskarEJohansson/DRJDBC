@@ -1,5 +1,8 @@
 package com.OskarJohansson.DungeonRun.Model.Monster;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 public class EnemyParentModel {
@@ -17,6 +20,7 @@ public class EnemyParentModel {
     private int level;
     private boolean killed;
     private int blockLevel;
+    private Timestamp timeOfDeath;
 
     public String getName() {
         return name;
@@ -128,6 +132,14 @@ public class EnemyParentModel {
 
     public void resetHealthPoints() {
         this.healthPoints = this.healthPointsBase;
+    }
+
+    public Timestamp getTimeOfDeath() {
+        return timeOfDeath;
+    }
+
+    public void setTimeOfDeath(Timestamp timeOfDeath) {
+        this.timeOfDeath = timeOfDeath;
     }
 
     public int attack() {
