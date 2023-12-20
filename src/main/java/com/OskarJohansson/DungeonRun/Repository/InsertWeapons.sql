@@ -129,5 +129,3 @@ Values(
 	50,
 	"Hell Fire rockets launching"
 	);
-	
-INSERT INTO Item (itemID, itemName, itemValue) VALUES (11,'healthPotion', 10)

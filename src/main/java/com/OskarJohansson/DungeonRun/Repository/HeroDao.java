@@ -179,9 +179,9 @@ public class HeroDao {
                     rowsInserted += saveItemInStash.executeUpdate();
                 }
 
-                PreparedStatement deleteKillList = conn.prepareStatement("DELETE FROM MonsterKillList  WHERE heroID = ? ");
-                deleteStash.setLong(1, hero.getId());
-                deleteStash.executeQuery();
+                PreparedStatement deleteKillList = conn.prepareStatement("DELETE FROM MonsterKillList WHERE monsterKillListID = ? ");
+                deleteKillList.setLong(1, hero.getKillListID());
+                deleteKillList.executeQuery();
 
                 PreparedStatement saveUniqueKillList = conn.prepareStatement("INSERT INTO MonsterKillList (monsterKillListID, monsterName, timeOfDeath) Values(?,?,?)");
 
@@ -323,7 +323,7 @@ public class HeroDao {
                 loadMonsterKillList.setLong(1, hero.getKillListID());
                 ResultSet loadedKillList = loadMonsterKillList.executeQuery();
 
-                if (loadedKillList.next()) {
+                while (loadedKillList.next()) {
                     EnemyParentModel killedMonster = new EnemyParentModel();
                     killedMonster.setName(loadedKillList.getString("monsterName"));
                     killedMonster.setTimeOfDeath(loadedKillList.getTimestamp("timeOfDeath"));
