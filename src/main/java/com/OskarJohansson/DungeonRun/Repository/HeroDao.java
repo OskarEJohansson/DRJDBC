@@ -28,24 +28,9 @@ public class HeroDao {
                                                   "killList, " +
                                                   "deathCount, " +
                                                   "codeBreaker, " +
-                                                  "weaponID) " +
-                                                  "VALUES (" +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?, " +
-                                                  "?)";
+                                                  "weaponID ) " +
+                                                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     private static final String INSERT_SAVEHERO_SQL = "INSERT INTO HeroSave (heroID) Value(?)";
 
     private static final String UPDATE_HERO_SQL = "UPDATE hero SET " +
@@ -114,8 +99,8 @@ public class HeroDao {
                     hero.setStashID(generatedKeys.getLong(1));
                 }
                 PreparedStatement saveStashIDInHero = conn.prepareStatement("UPDATE Hero SET stashID = ? WHERE (heroID) = ? ");
-                saveStashIDInHero.setLong(1,hero.getStashID());
-                saveStashIDInHero.setLong(2,hero.getStashID());
+                saveStashIDInHero.setLong(1, hero.getStashID());
+                saveStashIDInHero.setLong(2, hero.getStashID());
 
                 rowsInserted += saveStashIDInHero.executeUpdate();
 
@@ -134,18 +119,24 @@ public class HeroDao {
 
                 ResultSet generatedMonsterKillListID = saveKillList.getGeneratedKeys();
 
-                if(generatedMonsterKillListID.next()){
+                if (generatedMonsterKillListID.next()) {
                     hero.setKillListID(generatedMonsterKillListID.getLong(1));
                 }
 
+                PreparedStatement saveKillListIDInHero = conn.prepareStatement("UPDATE Hero SET KillListID = ? WHERE (heroID) = ? ");
+                saveKillListIDInHero.setLong(1, hero.getKillListID());
+                saveKillListIDInHero.setLong(2, hero.getStashID());
+
+                rowsInserted += saveKillListIDInHero.executeUpdate();
+
                 PreparedStatement saveUniqueKillList = conn.prepareStatement("INSERT INTO MonsterKillList (monsterKillListID, monsterName, timeOfDeath) Values(?,?,?)");
 
-                for(EnemyParentModel monster : hero.getKillStats()){
+                for (EnemyParentModel monster : hero.getKillStats()) {
                     saveUniqueKillList.setLong(1, hero.getKillListID());
                     saveUniqueKillList.setString(2, monster.getName());
                     saveUniqueKillList.setTimestamp(3, monster.getTimeOfDeath());
 
-                    System.out.println(hero.getKillListID() + monster.getName() +  monster.getTimeOfDeath());
+                    System.out.println(hero.getKillListID() + monster.getName() + monster.getTimeOfDeath());
                     rowsInserted += saveUniqueKillList.executeUpdate();
                 }
 
@@ -172,9 +163,9 @@ public class HeroDao {
 
                 int rowsInserted = statement.executeUpdate();
 
-                PreparedStatement deleteStash = conn.prepareStatement("TRUNCATE TABLE  uniqueStash  WHERE stashID = ? ");
-                deleteStash.setLong(1,hero.getStashID());
-                deleteStash.executeQuery();
+                PreparedStatement deleteStash = conn.prepareStatement("DELETE FROM uniqueStash WHERE stashID = ?");
+                deleteStash.setLong(1, hero.getStashID());
+                deleteStash.executeUpdate();
 
                 PreparedStatement saveItemInStash = conn.prepareStatement("INSERT INTO uniqueStash(stashID, itemID) VALUES (?, ?)");
                 saveItemInStash.setLong(3, hero.getStashID());
@@ -186,6 +177,21 @@ public class HeroDao {
 
 
                     rowsInserted += saveItemInStash.executeUpdate();
+                }
+
+                PreparedStatement deleteKillList = conn.prepareStatement("DELETE FROM MonsterKillList  WHERE heroID = ? ");
+                deleteStash.setLong(1, hero.getId());
+                deleteStash.executeQuery();
+
+                PreparedStatement saveUniqueKillList = conn.prepareStatement("INSERT INTO MonsterKillList (monsterKillListID, monsterName, timeOfDeath) Values(?,?,?)");
+
+                for (EnemyParentModel monster : hero.getKillStats()) {
+                    saveUniqueKillList.setLong(1, hero.getKillListID());
+                    saveUniqueKillList.setString(2, monster.getName());
+                    saveUniqueKillList.setTimestamp(3, monster.getTimeOfDeath());
+
+                    System.out.println(hero.getKillListID() + monster.getName() + monster.getTimeOfDeath());
+                    rowsInserted += saveUniqueKillList.executeUpdate();
                 }
 
                 return rowsInserted > 0;
@@ -275,6 +281,7 @@ public class HeroDao {
                 hero.setCodeBreaker(resultSet.getInt("codeBreaker"));
                 hero.setStashID(resultSet.getLong("stashID"));
                 hero.setId(resultSet.getLong("heroID"));
+                hero.setKillListID(resultSet.getLong("killListID"));
 
                 WeaponParentModel weapon = new WeaponParentModel();
                 weapon.setName(resultSet.getString("w.name"));
@@ -306,6 +313,23 @@ public class HeroDao {
                     item.setPotionValue(loadedItems.getInt("itemValue"));
                     hero.addPotionStash(item);
                 }
+
+                PreparedStatement loadMonsterKillList = conn.prepareStatement(
+                        "SELECT k.* " +
+                        "FROM MonsterKillList k " +
+                        "WHERE monsterKillListID = ?"
+                );
+
+                loadMonsterKillList.setLong(1, hero.getKillListID());
+                ResultSet loadedKillList = loadMonsterKillList.executeQuery();
+
+                if (loadedKillList.next()) {
+                    EnemyParentModel killedMonster = new EnemyParentModel();
+                    killedMonster.setName(loadedKillList.getString("monsterName"));
+                    killedMonster.setTimeOfDeath(loadedKillList.getTimestamp("timeOfDeath"));
+                    hero.addToKillStats(killedMonster);
+                }
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
