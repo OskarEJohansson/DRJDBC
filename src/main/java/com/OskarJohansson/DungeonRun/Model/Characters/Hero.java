@@ -31,6 +31,7 @@ public class Hero{
     private List<PotionParentModel> potionStash;
     private List<EnemyParentModel> killStats;
     private Long stashID;
+    private Long killListID;
 
     public Hero() {
         this.healthPoints = 5;
@@ -271,5 +272,13 @@ public class Hero{
 
     public void addToKillStats(EnemyParentModel killstats){
         this.killStats.add(killstats);
+    }
+
+    public Long getKillListID() {
+        return killListID;
+    }
+
+    public void setKillListID(Long killListID) {
+        this.killListID = killListID;
     }
 }

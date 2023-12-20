@@ -4,6 +4,7 @@ import com.OskarJohansson.DungeonRun.Model.Characters.Hero;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.HealthPotion;
 import com.OskarJohansson.DungeonRun.Model.Items.Potions.PotionParentModel;
 import com.OskarJohansson.DungeonRun.Model.Items.Weapon.WeaponParentModel;
+import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -125,6 +126,27 @@ public class HeroDao {
                     saveItemInStash.setLong(2, potion.getPotionID());
 
                     rowsInserted += saveItemInStash.executeUpdate();
+                }
+
+                PreparedStatement saveKillList = conn.prepareStatement("INSERT INTO KillListBridgeTable (heroID) Values(?)", Statement.RETURN_GENERATED_KEYS);
+                saveKillList.setLong(1, hero.getId());
+                rowsInserted += saveKillList.executeUpdate();
+
+                ResultSet generatedMonsterKillListID = saveKillList.getGeneratedKeys();
+
+                if(generatedMonsterKillListID.next()){
+                    hero.setKillListID(generatedMonsterKillListID.getLong(1));
+                }
+
+                PreparedStatement saveUniqueKillList = conn.prepareStatement("INSERT INTO MonsterKillList (monsterKillListID, monsterName, timeOfDeath) Values(?,?,?)");
+
+                for(EnemyParentModel monster : hero.getKillStats()){
+                    saveUniqueKillList.setLong(1, hero.getKillListID());
+                    saveUniqueKillList.setString(2, monster.getName());
+                    saveUniqueKillList.setTimestamp(3, monster.getTimeOfDeath());
+
+                    System.out.println(hero.getKillListID() + monster.getName() +  monster.getTimeOfDeath());
+                    rowsInserted += saveUniqueKillList.executeUpdate();
                 }
 
                 return rowsInserted > 0;
