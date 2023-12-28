@@ -1,10 +1,11 @@
 package com.OskarJohansson.DungeonRun.Model.Monster.Bosses;
 
 import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
+import com.OskarJohansson.DungeonRun.Model.Monster.iEnemy;
 
 import java.util.Random;
 
-public class KjellCOBoss extends EnemyParentModel {
+public class KjellCOBoss extends EnemyParentModel implements iEnemy {
 
     public KjellCOBoss() {
         super();
@@ -21,5 +22,11 @@ public class KjellCOBoss extends EnemyParentModel {
         this.setLevel(2);
         this.setKilled(false);
         this.setBlockLevel(4);
+    }
+
+    /// REMEBER TO SET PLAYER TO TRUE ON CODEBREAKER IN BATTLE CODE
+    @Override
+    public boolean isBossNerdWizard() {
+        return true;
     }
 }

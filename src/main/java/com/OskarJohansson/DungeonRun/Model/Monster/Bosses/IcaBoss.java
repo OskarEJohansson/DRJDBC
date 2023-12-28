@@ -1,10 +1,14 @@
 package com.OskarJohansson.DungeonRun.Model.Monster.Bosses;
 
+import com.OskarJohansson.DungeonRun.Control.MapControl;
+import com.OskarJohansson.DungeonRun.Control.MenuControl;
+import com.OskarJohansson.DungeonRun.Control.PlayerControl;
 import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
+import com.OskarJohansson.DungeonRun.Model.Monster.iEnemy;
 
 import java.util.Random;
 
-public class IcaBoss extends EnemyParentModel {
+public class IcaBoss extends EnemyParentModel implements iEnemy {
 
     public IcaBoss() {
         super();
@@ -21,5 +25,16 @@ public class IcaBoss extends EnemyParentModel {
         this.setLevel(2);
         this.setKilled(false);
         this.setBlockLevel(2);
+    }
+
+    @Override
+    public int enemyAttack(PlayerControl player, MapControl mapControl, MenuControl menuControl) {
+        this.setTurningPoints(this.getTurningPoints() - this.getAttackCost());
+        return new Random().nextInt(getDamageMin(), getDamageMax());
+    }
+
+    @Override
+    public boolean isBossNerdWizard() {
+        return false;
     }
 }

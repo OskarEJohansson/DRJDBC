@@ -157,6 +157,13 @@ public class PlayerControl {
         player.getHero().resetHealthPoints();
 
     }
+    public boolean checkIfPlayerIsOutOfTurningPoints() {
+        if (this.hero.getTurningPoints() <= 0) {
+            System.out.println("You are out of Turning Points!");
+            return true;
+        }
+        return false;
+    }
 
 
 }

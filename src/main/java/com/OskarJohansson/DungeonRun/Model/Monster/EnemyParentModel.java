@@ -1,11 +1,13 @@
 package com.OskarJohansson.DungeonRun.Model.Monster;
 
-import java.sql.Time;
+import com.OskarJohansson.DungeonRun.Control.MapControl;
+import com.OskarJohansson.DungeonRun.Control.MenuControl;
+import com.OskarJohansson.DungeonRun.Control.PlayerControl;
+
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Random;
 
-public class EnemyParentModel {
+public class EnemyParentModel implements iEnemy {
 
     private String name;
     private int healthPoints;
@@ -142,11 +144,18 @@ public class EnemyParentModel {
         this.timeOfDeath = timeOfDeath;
     }
 
-    public int attack() {
+    @Override
+    public boolean isBossNerdWizard() {
+        return false;
+    }
+
+    @Override
+    public int enemyAttack(PlayerControl player, MapControl mapControl, MenuControl menuControl) {
         this.setTurningPoints(this.getTurningPoints() - this.getAttackCost());
         return new Random().nextInt(getDamageMin(), getDamageMax());
     }
 
+    @Override
     public boolean block() {
         if (new Random().nextInt(1, 10) < this.blockLevel) {
             System.out.printf(">>>>    \033[0;32m %s blocked the attack successfully!\033[0m    <<<<\n", this.getName());
@@ -156,15 +165,17 @@ public class EnemyParentModel {
         return false;
     }
 
+    @Override
     public void displayEnemyStatus() {
         System.out.printf("""
                 ++++                    Enemy Stats                     ++++
                 ____________________________________________________________                
                 Enemy   %s  |   Health Points   %d/%d  |   Turning Points  %d  |
                                 
-                """, this.getName(), this.getHealthPoints(),getHealthPointsBase(), this.getTurningPoints());
+                """, this.getName(), this.getHealthPoints(), getHealthPointsBase(), this.getTurningPoints());
     }
 
+    @Override
     public void takeDamage(Boolean takeDamage, int damage) {
         if (!takeDamage) {
             this.setHealthPoints(this.getHealthPoints() - damage);

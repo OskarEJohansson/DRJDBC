@@ -1,10 +1,14 @@
 package com.OskarJohansson.DungeonRun.Model.Monster.Monster;
 
+import com.OskarJohansson.DungeonRun.Control.MapControl;
+import com.OskarJohansson.DungeonRun.Control.MenuControl;
+import com.OskarJohansson.DungeonRun.Control.PlayerControl;
 import com.OskarJohansson.DungeonRun.Model.Monster.EnemyParentModel;
+import com.OskarJohansson.DungeonRun.Model.Monster.iEnemy;
 
 import java.util.Random;
 
-public class Grunt extends EnemyParentModel {
+public class Grunt extends EnemyParentModel implements iEnemy {
 
     public Grunt() {
         super();
