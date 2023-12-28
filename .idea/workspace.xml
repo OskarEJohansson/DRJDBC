@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cfcacef-708c-4a26-9b0d-6b924cdbfcfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/iEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/BossCombatControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/MenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/MonsterCombatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/CombatControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/PlayerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/PlayerControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/Bosses/IcaBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/Bosses/IcaBoss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/Bosses/KjellCOBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/Bosses/KjellCOBoss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/EnemyParentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/EnemyParentModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/Monster/Grunt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Model/Monster/Monster/Grunt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/UserInputControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/OskarJohansson/DungeonRun/Control/UserInputControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +222,7 @@
       <workItem from="1701328478284" duration="5149000" />
       <workItem from="1701781854281" duration="1922000" />
       <workItem from="1702375467970" duration="14854000" />
-      <workItem from="1703151155720" duration="20267000" />
+      <workItem from="1703151155720" duration="24526000" />
     </task>
     <servers />
   </component>
